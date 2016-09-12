@@ -1,0 +1,12 @@
+#popup_container {font-family:Arial,sans-serif;font-size:14px;width:250px;background:#fff;border:solid 5px #999;color:#000;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
+#popup_title {font-weight:700;font-size:18px;text-align:center;color:#fff;background:#999;border:solid 1px #FFF;border-bottom: solid 1px #999;cursor:default;text-shadow:#000 1px 1px 0;padding:5px;margin:0;}
+#popup_content {background:8px 8px no-repeat url(images/info.gif);margin:0;min-height:48px;}
+#popup_content.alert {background-image: url(images/important.gif);}
+#popup_content.confirm {background-image: url(images/help.gif);}
+#popup_content.prompt {background-image: url(images/info.gif);}
+#popup_message {padding-left:48px;padding-right:8px;padding-top:8px;word-break: break-all; word-wrap:break-word;margin:0;}
+#popup_panel {padding:8px;margin:0;}
+#popup_prompt {margin:.5em 0em;}
+.popup_btn{background:#999;-moz-border-radius:5px;-webkit-border-radius: 5px;border-radius: 5px;
+    box-shadow:#000 1px 1px 4px;font-weight:700;color:#fff;text-shadow:#000 1px 1px 0;text-align:center;
+    padding:10px;margin:0;cursor:default;}

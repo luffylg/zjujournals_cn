@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class ManuscriptDao{
 
-    private static final String user = "mawechat";
-    private static final String password = "dpbp#293*&sf";
+    private static final String user = "";
+    private static final String password = "";
 
     public List<Manuscript> QueryStatuslistOne(String zid,String db) throws ClassNotFoundException, SQLException {
         String url = "jdbc:sqlserver://10.23.91.253:1433;databaseName="+db;

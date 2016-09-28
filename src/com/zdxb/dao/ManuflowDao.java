@@ -13,8 +13,8 @@ import java.util.List;
  * 和manuflowt表相关的操作
  */
 public class ManuflowDao {
-    private static final String user = "wechat";
-    private static final String password = "dpbp#293*&sf";
+    private static final String user = "";
+    private static final String password = "";
 
     public List<Manuflow> QueryStatusflow(String zid, String db) throws ClassNotFoundException, SQLException {
         String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName="+db;

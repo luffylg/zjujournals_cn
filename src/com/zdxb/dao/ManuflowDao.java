@@ -12,9 +12,7 @@ import java.util.List;
 /**
  * 和manuflowt表相关的操作
  */
-public class ManuflowDao {
-    private static final String user = "wechat";
-    private static final String password = "dpbp#293*&sf";
+public class ManuflowDao extends DaoBase{
 
     public List<Manuflow> QueryStatusflow(String zid, String db) throws ClassNotFoundException, SQLException {
         String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName="+db;
@@ -28,6 +26,7 @@ public class ManuflowDao {
                 "      ,t1.[manu_number]\n" +
                 "      ,t1.[phase_id]\n" +
                 "      ,t3.[title]\n" +
+                "      ,t3.[dis_authorenames]\n" +
                 "      ,t1.[submit_date]\n" +
                 "      ,t1.[flow_id]\n" +
                 "      ,t1.[plan_date]\n" +
@@ -37,13 +36,27 @@ public class ManuflowDao {
                 "left join [dbo].[manuscript] t3 on t1.[manu_id]=t3.[manu_id]"+
                 "WHERE 1=1";
         StringBuilder sql=new StringBuilder(sql2);
+        List<Manuflow> ManuflowList = new ArrayList<>();
+        String[] split = zid.split("\\+");
+        if (split.length!=2){
+            return ManuflowList;
+        }
+        zid=split[0];
+        String name=split[1];
         if (zid!=null && !"".equals(zid)){
             sql.append(" and t1.[manu_number] = '"+zid+"'");
+        }else {
+            return ManuflowList;
         }
+        if (name!=null && !"".equals(name)){
+            sql.append(" and t3.[dis_authorenames] LIKE '%"+name+"%'");
+        }else {
+            return ManuflowList;
+        }
+
         sql.append(" order by t1.[flow_id]");
 
         PreparedStatement preparedStatement = conn.prepareStatement(sql.toString());
-        List<Manuflow> ManuflowList = new ArrayList<>();
         ResultSet rs = preparedStatement.executeQuery();
 
         StringSplit ss=new StringSplit();

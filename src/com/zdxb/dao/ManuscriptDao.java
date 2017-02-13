@@ -11,10 +11,7 @@ import java.util.List;
 /**
  * 和manuscript表相关的操作
  */
-public class ManuscriptDao{
-
-    private static final String user = "mawechat";
-    private static final String password = "dpbp#293*&sf";
+public class ManuscriptDao extends DaoBase{
 
     public List<Manuscript> QueryStatuslistOne(String zid,String db) throws ClassNotFoundException, SQLException {
         String url = "jdbc:sqlserver://10.23.91.253:1433;databaseName="+db;

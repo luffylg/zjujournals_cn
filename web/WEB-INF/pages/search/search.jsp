@@ -45,10 +45,12 @@
         $.search = function() {
             var id = $("#ducumentId").val().trim();
             $("#ducumentId").val(id);
-            if ($("#ducumentId").val() == "" || $("#ducumentId").val() == "ZUSA/B/C-S/D-15-00") {
-                $("#tips span").text("请输入文稿编号");
+
+            if ($("#ducumentId").val() == "" || $("#ducumentId").val().indexOf("+")<0) {
+                $("#tips span").text("请输入指定格式 <%=palceholder%>+张三");
                 return;
             }
+
 //            if(!id.match(/^[Zz][Uu][Ss][ABCabc]\-[DdSs]\-\d{2}\-\d{5}/)){
 //                $("#tips span").text("请输入指定格式ZUSA/B/C-S/D-15-00");
 //                return;
@@ -103,7 +105,7 @@
             </div>
         </div>
         <div id="search">
-            <input id="ducumentId" type="text" placeholder=<%=palceholder%>>
+            <input id="ducumentId" type="text" placeholder=<%=palceholder%>+张三>
             <div align="center">
                 <div id="button" onclick="$.search()">搜索</div>
                 <div id="tips" align="center">
@@ -112,7 +114,7 @@
             </div>
             <div id="writeTips">
                 <div align="center">
-                    <span style="color: red;">注：</span>&nbsp;&nbsp;&nbsp;请输入投稿确认邮件中形如<%=palceholder%>的稿号。
+                    <span style="color: red;">注：</span>&nbsp;&nbsp;&nbsp;请输入稿号+姓名。示例：<%=palceholder%>+张三。
                     <br>
                 </div>
             </div>

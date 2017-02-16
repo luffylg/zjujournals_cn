@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class ManuflowDao extends DaoBase{
 
+
     public List<Manuflow> QueryStatusflow(String zid, String db) throws ClassNotFoundException, SQLException {
         String url = "jdbc:sqlserver://127.0.0.1:1433;databaseName="+db;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

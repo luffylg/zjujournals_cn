@@ -43,10 +43,11 @@
     <link rel="stylesheet" type="text/css" href="<%=basePath%>resources/search/css/search.css">
     <script>
         $.search = function() {
-            var id = $("#ducumentId").val().trim();
+            var id = $("#ducumentId").val().trim().replace(".","").replace(";","");
+
             $("#ducumentId").val(id);
 
-            if ($("#ducumentId").val() == "" || $("#ducumentId").val().indexOf("+")<0) {
+            if (id == "" || id.indexOf("+")<0||id.indexOf("+")==id.length-1) {
                 $("#tips span").text("请输入指定格式 <%=palceholder%>+张三");
                 return;
             }
@@ -60,7 +61,7 @@
                 dataType : "text",
                 url : "<%=basePath%>flowquery.action",
                 data : {
-                    "zid" : $("#ducumentId").val(),
+                    "zid" : id,
                     "bk":'<%=kanming%>'
                     //"documentDTO.lid" : $("#ducumentId").serialize()
                 },
@@ -101,7 +102,7 @@
         <div id="imgShow">
             <img alt="nit_logo" src="<%=basePath%>resources/search/images/LOGO.png">
             <div>
-                <span id="logo_title"><%=name%>稿件状态查询</span>
+                <span id="logo_title"><%=name%><br>稿件状态查询</span>
             </div>
         </div>
         <div id="search">
@@ -114,7 +115,7 @@
             </div>
             <div id="writeTips">
                 <div align="center">
-                    <span style="color: red;">注：</span>&nbsp;&nbsp;&nbsp;请输入稿号+姓名。示例：<%=palceholder%>+张三。
+                    <span style="color: red;">注：</span>&nbsp;&nbsp;&nbsp;请输入稿号+第一作者姓名。示例：<%=palceholder%>+张三。
                     <br>
                 </div>
             </div>

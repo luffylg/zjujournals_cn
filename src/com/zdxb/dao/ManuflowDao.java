@@ -26,7 +26,7 @@ public class ManuflowDao extends DaoBase{
                 "      ,t1.[manu_number]\n" +
                 "      ,t1.[phase_id]\n" +
                 "      ,t3.[title]\n" +
-                "      ,t3.[dis_authorenames]\n" +
+                "      ,t3.[dis_authors]\n" +
                 "      ,t1.[submit_date]\n" +
                 "      ,t1.[flow_id]\n" +
                 "      ,t1.[plan_date]\n" +
@@ -49,13 +49,12 @@ public class ManuflowDao extends DaoBase{
             return ManuflowList;
         }
         if (name!=null && !"".equals(name)){
-            sql.append(" and t3.[dis_authorenames] LIKE '%"+name+"%'");
+            sql.append(" and t3.[dis_authors] LIKE '%"+name+"%'");
         }else {
             return ManuflowList;
         }
 
         sql.append(" order by t1.[flow_id]");
-
         PreparedStatement preparedStatement = conn.prepareStatement(sql.toString());
         ResultSet rs = preparedStatement.executeQuery();
 
@@ -89,7 +88,7 @@ public class ManuflowDao extends DaoBase{
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         ManuflowDao manuscriptDao = new ManuflowDao();
-        manuscriptDao.QueryStatusflow("G160542W","Jweb_zjugxb");
+        manuscriptDao.QueryStatusflow("G160542W+张","Jweb_zjugxb");
         List<Manuflow> manuflowList = manuscriptDao.QueryStatusflow("G160542W","Jweb_zjugxb");
         for (Manuflow ms:manuflowList
                 ) {
